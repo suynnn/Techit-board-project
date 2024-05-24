@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<head>
+    <meta charset="UTF-8">
+    <title>writeForm page</title>
+    <link rel="stylesheet" th:href="@{/css/form.css}">
+</head>
+<body>
+    <div class="background">
+        <h1>Create a New Board</h1>
+        <form th:action="@{/write}" method="post" th:object="${boardRegisterDto}">
+            <div>
+                <label for="name">Name : </label><br/>
+                <input type="text" id="name" th:field="*{name}" required />
+                <div th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></div>
+            </div>
+
+            <div>
+                <label for="title">Title : </label><br/>
+                <input type="text" id="title" th:field="*{title}" required/>
+                <div th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></div>
+            </div>
+
+            <div>
+                <label for="content">Content : </label><br/>
+                <textarea id="content" th:field="*{content}" required></textarea>
+                <div th:if="${#fields.hasErrors('content')}" th:errors="*{content}"></div>
+            </div>
+
+            <div>
+                <label for="password">Password : </label><br/>
+                <input type="password" id="password" th:field="*{password}" required/>
+                <div th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></div>
+            </div>
+
+            <input type="submit" id="submitBtn" value="Create">
+        </form>
+    </div>
+</body>
+</html>

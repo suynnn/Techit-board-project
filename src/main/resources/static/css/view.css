@@ -1,0 +1,47 @@
+body {
+    font-family: "Arial", sans-serif;
+    margin: 40px;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li {
+    display: inline;
+    margin-right: 5px;
+}
+li a.active {
+    font-weight: bold;
+    text-decoration: underline;
+}
+.write-link {
+    display: block;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.background {
+    border: 1px solid #dddddd;
+    background-color: #f2f2f2;
+    padding: 20px;
+}
+
+.background > div {
+    margin: 7px;
+}
+
+.background > div > a {
+    padding: 3px;
+}
+
+.buttonPlace {
+    padding-top: 15px;
+}

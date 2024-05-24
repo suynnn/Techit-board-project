@@ -59,7 +59,7 @@ public class BoardController {
     }
 
     @PostMapping("/write")
-    public String registerBoard(@Valid @ModelAttribute("") BoardRegisterDto boardRegisterDto,
+    public String registerBoard(@Valid @ModelAttribute("boardRegisterDto") BoardRegisterDto boardRegisterDto,
                                 BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             return "board/writeform";

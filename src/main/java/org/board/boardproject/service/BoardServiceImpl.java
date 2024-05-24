@@ -10,6 +10,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
@@ -20,6 +21,7 @@ public class BoardServiceImpl implements BoardService{
     private final BoardRepository boardRepository;
 
     @Override
+    @Transactional(readOnly = true)
     public Page<Board> findPaginated(Pageable pageable) {
         Pageable sortedByDescId = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(),
                 Sort.by(Sort.Direction.DESC, "id"));
@@ -28,12 +30,14 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Board findById(Long id) {
 
         return boardRepository.findById(id).orElseThrow();
     }
 
     @Override
+    @Transactional
     public void saveBoard(BoardRegisterDto boardRegisterDto) {
 
         Board board = Board.builder()
@@ -56,11 +60,13 @@ public class BoardServiceImpl implements BoardService{
     }
 
     @Override
+    @Transactional
     public void deleteById(Long id) {
         boardRepository.deleteById(id);
     }
 
     @Override
+    @Transactional
     public void update(BoardUpdateDto boardUpdateDto) {
         Board board = findById(boardUpdateDto.getId());
 
